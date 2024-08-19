@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import csv
-from typing import List, Tuple
+import math
+from typing import List, Tuple, Dict
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -38,3 +39,18 @@ class Server:
         if start_point > len(data):
             return []
         return data[start_point:end_point]
+
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
+        """Get information"""
+        data_on_page = self.get_page(page, page_size)
+        start_point, end_point = index_range(page, page_size)
+        total_pages = math.ceil(len(self.__dataset) / page_size)
+        page_information = {
+            "page_size": len(data_on_page),
+            "page": page,
+            "data": data_on_page
+            "next_page": page + 1 if end < len(self.__dataset) else None,
+            "prev_page": page - 1 if start > 0 else None,
+            "total_pages": total_pages
+        }
+        return page_information
