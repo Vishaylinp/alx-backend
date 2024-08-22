@@ -10,13 +10,13 @@ class FIFOCache(BaseCaching):
     """Uses the First in and first out method
     """
     def __init__(self):
-        """Initializes the cache.
+        """Initialisation
         """
         super().__init__()
         self.cache_data = OrderedDict()
 
     def put(self, key, item):
-        """Adds an item in the cache.
+        """Adds an item
         """
         if key is None or item is None:
             return
