@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""LIFO"""
+"""LIFO algo"""
 from collections import OrderedDict
 BaseCaching = __import__("base_caching").BaseCaching
 
@@ -24,5 +24,5 @@ class LIFOCache(BaseCaching):
         self.cache_data.move_to_end(key, last=True)
 
     def get(self, key):
-        """retrieve"""
+        """retrieve item"""
         return self.cache_data(key, None)

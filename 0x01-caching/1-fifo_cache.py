@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fifo"""
+"""Fifo Alogo"""
 from collections import OrderedDict
 BaseCaching = __import__("base_caching").BaseCaching
 
@@ -22,5 +22,5 @@ class FIFOCache(BaseCaching):
             print("DISCARD:", first)
 
         def get(self, key):
-            """retrieve"""
+            """retrieve it"""
             return self.cache_data.get(key, None)
