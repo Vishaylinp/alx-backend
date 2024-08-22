@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """LIFO algo in python"""
 from collections import OrderedDict
-BaseCaching = __import__("base_caching").BaseCaching
+
+from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
