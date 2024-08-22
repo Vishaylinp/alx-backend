@@ -30,4 +30,4 @@ class LIFOCache(BaseCaching):
     def get(self, key):
         """retrieve item
         """
-        return self.cache_data(key, None)
+        return self.cache_data.get(key, None)
