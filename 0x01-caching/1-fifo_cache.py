@@ -1,32 +1,31 @@
 #!/usr/bin/env python3
-"""Fifo Alogo in python"""
-BaseCaching = __import__("base_caching").BaseCaching
+"""First-In First-Out caching module.
+"""
+from collections import OrderedDict
+
+from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):
-    """First in first out"""
-
+    """Uses the First in and first out method
+    """
     def __init__(self):
-        """initilisation"""
-
+        """Initializes the cache.
+        """
         super().__init__()
+        self.cache_data = OrderedDict()
 
     def put(self, key, item):
-        """add item"""
-
+        """Adds an item in the cache.
+        """
         if key is None or item is None:
             return
-
-        if (len(self.cache_data) >= BaseCaching.MAX_ITEMS
-                and key not in self.cache_data):
-            first_in = next(iter(self.cache_data))
-            del self.cache_data[first_in]
-            print("DISCARD: {}".format(first))
-
         self.cache_data[key] = item
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            first, _ = self.cache_data.popitem(False)
+            print("DISCARD:", first)
 
-        def get(self, key):
-            """retrieve it"""
-            if key is None or key not in self.cache_data:
-                return None
-            return self.cache_data.get(key)
+    def get(self, key):
+        """Retrieves an item.
+        """
+        return self.cache_data.get(key, None)
