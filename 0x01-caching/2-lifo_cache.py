@@ -5,15 +5,18 @@ BaseCaching = __import__("base_caching").BaseCaching
 
 
 class LIFOCache(BaseCaching):
-    """last in first out"""
+    """last in first out method used
+    """
 
     def __init__(self):
-        """initilisation"""
+        """initilisation
+        """
         super().__init__()
         self.cache_data = OrderedDict()
 
     def put(self, key, item):
-        """add item"""
+        """add item
+        """
         if key is None or item is None:
             return
         if key not in self.cache_data:
@@ -24,5 +27,6 @@ class LIFOCache(BaseCaching):
         self.cache_data.move_to_end(key, last=True)
 
     def get(self, key):
-        """retrieve item"""
+        """retrieve item
+        """
         return self.cache_data(key, None)
